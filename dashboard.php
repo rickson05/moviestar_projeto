@@ -11,8 +11,12 @@
   $movieDao = new MovieDAO($conn, $BASE_URL);
 
   $userData = $userDao->verifyToken(true);
+  
+  if($userData && isset($userData->$id)){
 
-  $userMovies = $movieDao->getMoviesByUserId($userData->id);
+    $userMovies = $movieDao->getMoviesByUserId($userData->id);
+  }
+  $userMovies =  [];
 
 ?>
   <div id="main-container" class="container-fluid">
