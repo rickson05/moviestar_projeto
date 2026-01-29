@@ -74,8 +74,11 @@ class UserDAO implements UserDAOInterface {
 
     public function setTokenToSession($token, $redirect = true) {
 
+    $_SESSION["token"] = $token;
+    
         if($redirect) {
             // Redireciona para o perfil do usuario
+            header("Location : " $this->$url . "editprofile.php");
         }
 
         return true;
