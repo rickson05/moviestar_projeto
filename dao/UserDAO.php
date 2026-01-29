@@ -78,10 +78,8 @@ class UserDAO implements UserDAOInterface {
     
         if($redirect) {
             // Redireciona para o perfil do usuario
-            header("Location : " $this->$url . "editprofile.php");
+            header("Location : " . $this->$url . "editprofile.php");
         }
-
-        return true;
     }
 
     public function authenticateUser($email, $password) {
@@ -93,11 +91,25 @@ class UserDAO implements UserDAOInterface {
     }
 
     public function findById($id) {
-        return false;
+        $stmt->conn->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->bindParam(":id", $user->id);
+
+        if($stmt->rowCount() > 0){
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->buildUser($data);
+        }
     }
 
     public function findByToken($token) {
-        return false;
+        $stmt->conn->prepare("SELECT * FROM users WHERE token = :token");
+        $stmt->bindParam(":token", $user->token);
+        $stmt->execute();
+        
+         if($stmt->rowCount() > 0) {
+            // Redireciona para o perfil do usuario
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $this->buildUser($data);
+        }
     }
 
     public function destroyToken() {
