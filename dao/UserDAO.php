@@ -114,7 +114,7 @@ class UserDAO implements UserDAOInterface {
 
     public function destroyToken() {
         // Redirecionar e apresentar a mensagem de sucesso
-        $_SESSION["message"] = "Cadastro realizado";
+        $_SESSION["token"] = "token excluido";
         header("Location :" . $this->$url. "");
     }
 
