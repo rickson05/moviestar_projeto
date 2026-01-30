@@ -11,10 +11,8 @@
   $movieDao = new MovieDAO($conn, $BASE_URL);
 
   $userData = $userDao->verifyToken(true);
-  
-  if($userData && isset($userData->$id)){
 
-    $userMovies = $movieDao->getMoviesByUserId($userData->id);
+  $userMovies = $movieDao->getMoviesByUserId($userData->id[]);
 
   } else{
     $userMovies =  [];
@@ -37,7 +35,7 @@
           <th scope="col" class="actions-column">Ações</th>
         </thead>
         <tbody>
-          <?php foreach($userMovies as $movie): ?>
+          <?php foreach($userMovies ?? [] as $movie): ?>
           <tr>
             <td scope="row"><?= $movie->id ?></td>
             <td><a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="table-movie-title"><?= $movie->title ?></a></td>
