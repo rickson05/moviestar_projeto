@@ -108,8 +108,8 @@ class UserDAO implements UserDAOInterface {
     }
 
     public function findByToken($token) {
-        $stmt->conn->prepare("SELECT * FROM users WHERE token = :token");
-        $stmt->bindParam(":token", $user->token);
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+        $stmt->bindParam(":token", $token);
         $stmt->execute();
         
          if($stmt->rowCount() > 0) {
