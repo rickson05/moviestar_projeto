@@ -9,7 +9,7 @@
   require_once("modeles/Message.php");
 
   // Criar o objeto DAO para acessar os filmes
-  // $movieDao = new MovieDAO($conn, $BASE_URL);
+  $movieDao = new MovieDAO($conn, $BASE_URL, $message);
 
   
 
