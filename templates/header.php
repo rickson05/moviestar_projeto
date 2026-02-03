@@ -44,7 +44,7 @@
     <form action="#" method="GET" id="search-form">
       <input type="text" name="q" id="search" placeholder="Buscar Filmes" aria-label="Search">
       <button type="submit"><i class="bi bi-search"></i></button>
-    </form>
+    </form> <!--vericação de usuario -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a href="newmovie.html" class="nav-link"><i class="bi bi-plus-square"></i>Incluir Filme</a>
